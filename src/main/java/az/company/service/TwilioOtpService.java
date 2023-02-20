@@ -47,6 +47,7 @@ return Mono.just(passwordResetResponseDto);
 
 public Mono<String> validOTP(String userInput,String username){
     if(userInput.equals(map.get(username))){
+        map.remove(username,userInput);
         return Mono.just("Valid OTP ilerleyin!");
     }else{
         return Mono.error(new IllegalArgumentException("Invalid OTP retry"));
